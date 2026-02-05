@@ -1,142 +1,53 @@
-/* Configurações de Base */
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #f0f0f0; /* Cinza */
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: #e9ecef; margin: 0; color: #333;
 }
 
-.container {
-    background-color: #ffffff;
-    width: 90%;
-    max-width: 500px;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+.saep-header {
+    background: #fff; padding: 15px 5%; display: flex; 
+    justify-content: space-between; border-bottom: 5px solid #ff6600;
 }
 
-h2 {
-    color: #ff6600;
-    text-align: center;
-    margin-bottom: 25px;
+.logo { font-size: 24px; font-weight: bold; color: #ff6600; }
+.logo span { color: #666; font-weight: normal; }
+
+.main-container { padding: 40px 5%; display: flex; justify-content: center; }
+.section { display: none; width: 100%; max-width: 1100px; }
+.active { display: block; }
+
+/* Cards */
+.card-login, .card-questao, .card-status {
+    background: white; padding: 30px; border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* Campos de Texto */
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.3s;
-}
+.layout-prova { display: grid; grid-template-columns: 1fr 300px; gap: 30px; }
 
-input:focus {
-    border-color: #ff6600;
+/* Opções de Resposta (AQUI CORRIGE O VISUAL FEIO) */
+.opcao-item {
+    display: flex; align-items: center; padding: 15px;
+    border: 2px solid #eee; border-radius: 8px; margin-bottom: 10px;
+    cursor: pointer; transition: 0.2s;
 }
+.opcao-item:hover { background: #fff5ed; border-color: #ff6600; }
+.opcao-item input { margin-right: 15px; width: 20px; height: 20px; accent-color: #ff6600; }
+
+/* Grelha Lateral */
+.grelha-dots { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 20px 0; }
+.dot {
+    width: 40px; height: 40px; border: 2px solid #ccc; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer;
+}
+.dot.atual { border-color: #ff6600; color: #ff6600; }
+.dot.respondida { background: #333; color: white; border-color: #333; }
 
 /* Botões */
 button {
-    background-color: #ff6600;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+    background: #ff6600; color: white; border: none; padding: 12px 25px;
+    border-radius: 6px; font-weight: bold; cursor: pointer;
 }
-
-button:hover {
-    background-color: #e65c00;
-    transform: translateY(-2px);
-}
-
-.btn-secundario {
-    background-color: #666; /* Cinza para botões de voltar */
-}
-
-.btn-secundario:hover {
-    background-color: #444;
-}
-
-/* Navegação e Questões */
-.section {
-    display: none;
-}
-
-.active {
-    display: block;
-    animation: fadeIn 0.5s;
-}
-
-.progresso {
-    font-size: 0.9rem;
-    color: #888;
-    text-align: right;
-    margin-bottom: 10px;
-}
-
-.questao-box {
-    border-top: 3px solid #ff6600;
-    padding: 20px 0;
-    margin-bottom: 20px;
-}
-
-.opcoes label {
-    display: block;
-    background: #f9f9f9;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 6px;
-    cursor: pointer;
-    border: 1px solid #eee;
-}
-
-.opcoes label:hover {
-    background: #fff5ed;
-}
-
-.navegacao {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-/* Animação suave */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ... (Mantenha o CSS anterior e adicione estes) ... */
-
-.resumo-item {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    text-align: left;
-    font-size: 0.9rem;
-}
-
-.certo {
-    background-color: #d4edda;
-    border-left: 5px solid #28a745;
-    color: #155724;
-}
-
-.errado {
-    background-color: #f8d7da;
-    border-left: 5px solid #dc3545;
-    color: #721c24;
-}
-
-#detalhes-correcao {
-    max-height: 300px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-}
+button:hover { background: #e65c00; }
+.nav-botoes { display: flex; justify-content: space-between; margin-top: 30px; }
+.btn-voltar { background: #999; }
