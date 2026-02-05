@@ -5,31 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAEP - Simulado Profissional</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="grain-overlay"></div>
+    
     <header class="saep-header">
-        <div class="logo">SAEP <span>2024</span></div>
+        <div class="logo">
+            <span class="logo-main">SAEP</span>
+            <span class="logo-year">2024</span>
+        </div>
         <div id="user-info" class="user-info"></div>
     </header>
 
     <main class="main-container">
+        <!-- Tela de Login -->
         <section id="login" class="section active">
             <div class="card-login">
-                <h2>Identificação</h2>
-                <input type="text" id="nome-input" placeholder="Nome Completo">
-                <input type="text" id="inst-input" placeholder="Escola/Instituição">
-                <button onclick="salvarLogin()">Iniciar Avaliação</button>
+                <div class="login-decoration"></div>
+                <h2>Identificação do Candidato</h2>
+                <p class="subtitle">Preencha seus dados para iniciar a avaliação</p>
+                <div class="input-group">
+                    <input type="text" id="nome-input" placeholder="Nome Completo" required>
+                    <span class="input-line"></span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="inst-input" placeholder="Escola/Instituição" required>
+                    <span class="input-line"></span>
+                </div>
+                <button class="btn-primary" onclick="salvarLogin()">
+                    Iniciar Avaliação
+                    <span class="btn-arrow">→</span>
+                </button>
             </div>
         </section>
 
+        <!-- Tela de Seleção -->
         <section id="selecao" class="section">
-            <h2 class="titulo-central">Escolha seu Caderno</h2>
+            <h2 class="titulo-central">Escolha seu Caderno de Prova</h2>
+            <p class="descricao-central">Selecione a área de conhecimento para sua avaliação</p>
             <div class="grid-provas">
-                <div class="card-prova" onclick="iniciarProva('frontend')">FRONT-END</div>
-                <div class="card-prova" onclick="iniciarProva('backend')">BACK-END</div>
+                <div class="card-prova" onclick="iniciarProva('frontend')">
+                    <div class="card-prova-icon">{ }</div>
+                    <h3>FRONT-END</h3>
+                    <p>HTML, CSS, JavaScript e Frameworks</p>
+                    <div class="card-prova-badge">10 questões</div>
+                </div>
+                <div class="card-prova" onclick="iniciarProva('backend')">
+                    <div class="card-prova-icon">[ ]</div>
+                    <h3>BACK-END</h3>
+                    <p>Node.js, APIs e Banco de Dados</p>
+                    <div class="card-prova-badge">10 questões</div>
+                </div>
             </div>
         </section>
 
+        <!-- Tela de Prova -->
         <section id="prova" class="section">
             <div class="layout-prova">
                 <div class="col-questao">
@@ -37,26 +70,57 @@
                         <span id="label-questao" class="label-q">Questão 01</span>
                         <div id="conteudo-questao"></div>
                         <div class="nav-botoes">
-                            <button class="btn-voltar" id="btn-voltar" onclick="anterior()">← Voltar</button>
-                            <button class="btn-proximo" id="btn-proximo" onclick="proxima()">Próxima →</button>
+                            <button class="btn-secondary" id="btn-voltar" onclick="anterior()">
+                                ← Anterior
+                            </button>
+                            <button class="btn-primary" id="btn-proximo" onclick="proxima()">
+                                Próxima →
+                            </button>
                         </div>
                     </div>
                 </div>
                 <aside class="col-status">
                     <div class="card-status">
                         <h3>Cartão Resposta</h3>
+                        <p class="status-subtitle">Clique nos números para navegar</p>
                         <div id="grelha" class="grelha-dots"></div>
-                        <button class="btn-finalizar" onclick="finalizar()">Finalizar</button>
+                        <div class="legenda">
+                            <div class="legenda-item">
+                                <span class="dot-exemplo respondida"></span>
+                                <span>Respondida</span>
+                            </div>
+                            <div class="legenda-item">
+                                <span class="dot-exemplo atual"></span>
+                                <span>Atual</span>
+                            </div>
+                            <div class="legenda-item">
+                                <span class="dot-exemplo"></span>
+                                <span>Não respondida</span>
+                            </div>
+                        </div>
+                        <button class="btn-finalizar" onclick="finalizar()">
+                            Finalizar Prova
+                        </button>
                     </div>
                 </aside>
             </div>
         </section>
 
+        <!-- Tela de Resultado -->
         <section id="resultado" class="section">
-            <div class="card-login">
-                <h2>Fim da Prova</h2>
-                <div id="nota" class="nota-grande">0/10</div>
-                <button onclick="location.reload()">Refazer</button>
+            <div class="card-resultado">
+                <div class="resultado-decoration"></div>
+                <h2>Avaliação Finalizada</h2>
+                <p class="resultado-subtitle">Confira seu desempenho</p>
+                <div id="nota" class="nota-grande">
+                    <span class="nota-valor">0</span>
+                    <span class="nota-total">/10</span>
+                </div>
+                <div id="percentual" class="percentual"></div>
+                <button class="btn-primary" onclick="location.reload()">
+                    Refazer Avaliação
+                    <span class="btn-arrow">↻</span>
+                </button>
             </div>
         </section>
     </main>
