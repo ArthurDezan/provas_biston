@@ -12,7 +12,7 @@ const questoes = {
         },
         { 
             q: "Qual tag HTML é usada para criar uma quebra de linha?", 
-            o: ["<break>", "<lb>", "<br>", "<line>"], 
+            o: ["&lt;break&gt;", "&lt;lb&gt;", "&lt;br&gt;", "&lt;line&gt;"], 
             c: 2 
         },
         { 
@@ -27,7 +27,7 @@ const questoes = {
         },
         { 
             q: "Qual tag HTML é usada para criar um link?", 
-            o: ["<link>", "<a>", "<href>", "<url>"], 
+            o: ["&lt;link&gt;", "&lt;a&gt;", "&lt;href&gt;", "&lt;url&gt;"], 
             c: 1 
         },
         { 
@@ -47,7 +47,7 @@ const questoes = {
         },
         { 
             q: "Como você adiciona um comentário em HTML?", 
-            o: ["// comentário", "/* comentário */", "<!-- comentário -->", "# comentário"], 
+            o: ["// comentário", "/* comentário */", "&lt;!-- comentário --&gt;", "# comentário"], 
             c: 2 
         }
     ],
@@ -168,19 +168,30 @@ function iniciarProva(tema) {
 // Exibir questão atual
 function mostrar() {
     const q = prova[idx];
+    
+    // Debug: verificar se a questão tem opções
+    console.log('Questão atual:', q);
+    console.log('Opções:', q.o);
+    
     document.getElementById('label-questao').innerText = `Questão ${String(idx + 1).padStart(2, '0')}`;
     
     let html = `<p>${q.q}</p>`;
-    q.o.forEach((opt, i) => {
-        const checked = respostas[idx] === i ? 'checked' : '';
-        const opcaoTexto = opt || `Opção ${i + 1}`; // Garantir que sempre tenha texto
-        html += `
-            <label class="opcao-item">
-                <input type="radio" name="resposta" value="${i}" onclick="gravar(${i})" ${checked}>
-                <span>${opcaoTexto}</span>
-            </label>
-        `;
-    });
+    
+    // Verificar se existem opções
+    if (!q.o || q.o.length === 0) {
+        html += '<p style="color: red;">Erro: Esta questão não tem opções de resposta.</p>';
+    } else {
+        q.o.forEach((opt, i) => {
+            const checked = respostas[idx] === i ? 'checked' : '';
+            const opcaoTexto = opt || `Opção ${i + 1}`;
+            html += `
+                <label class="opcao-item">
+                    <input type="radio" name="resposta" value="${i}" onclick="gravar(${i})" ${checked}>
+                    <span>${opcaoTexto}</span>
+                </label>
+            `;
+        });
+    }
     
     document.getElementById('conteudo-questao').innerHTML = html;
     
