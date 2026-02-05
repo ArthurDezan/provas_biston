@@ -1,4 +1,56 @@
 const questoes = {
+    iot: [
+        { 
+            q: "O que significa IoT?", 
+            o: ["Internet of Things", "Integration of Technology", "Internet of Tools", "Interface of Technology"], 
+            c: 0 
+        },
+        { 
+            q: "Qual protocolo é mais usado para comunicação em dispositivos IoT de baixo consumo?", 
+            o: ["HTTP", "MQTT", "FTP", "SMTP"], 
+            c: 1 
+        },
+        { 
+            q: "O que é um sensor DHT11?", 
+            o: ["Sensor de movimento", "Sensor de temperatura e umidade", "Sensor de luz", "Sensor ultrassônico"], 
+            c: 1 
+        },
+        { 
+            q: "Qual plataforma de desenvolvimento é mais popular para projetos IoT?", 
+            o: ["Arduino", "PlayStation", "Xbox", "Nintendo"], 
+            c: 0 
+        },
+        { 
+            q: "O que é MQTT?", 
+            o: ["Um banco de dados", "Protocolo de mensagens leve para IoT", "Uma linguagem de programação", "Um sistema operacional"], 
+            c: 1 
+        },
+        { 
+            q: "Qual a tensão de operação padrão do Arduino Uno?", 
+            o: ["3.3V", "5V", "9V", "12V"], 
+            c: 1 
+        },
+        { 
+            q: "O que é um Raspberry Pi?", 
+            o: ["Um sensor", "Um computador de placa única", "Um protocolo de rede", "Um tipo de bateria"], 
+            c: 1 
+        },
+        { 
+            q: "Qual componente é usado para controlar a intensidade de um LED?", 
+            o: ["Resistor", "Capacitor", "PWM (Modulação por Largura de Pulso)", "Transistor"], 
+            c: 2 
+        },
+        { 
+            q: "O que é um atuador em sistemas IoT?", 
+            o: ["Dispositivo que coleta dados", "Dispositivo que executa ações físicas", "Um tipo de sensor", "Um protocolo de comunicação"], 
+            c: 1 
+        },
+        { 
+            q: "Qual a principal vantagem do protocolo LoRaWAN?", 
+            o: ["Alta velocidade", "Longo alcance com baixo consumo", "Processamento em nuvem", "Interface gráfica"], 
+            c: 1 
+        }
+    ],
     frontend: [
         { 
             q: "O que significa HTML?", 
