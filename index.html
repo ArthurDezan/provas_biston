@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Provas Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <section id="login" class="section active">
+            <h2>Portal de Provas</h2>
+            <input type="text" id="nome" placeholder="Nome Completo">
+            <input type="text" id="inst" placeholder="Instituição">
+            <button onclick="irPara('selecao')">Prosseguir</button>
+        </section>
+
+        <section id="selecao" class="section">
+            <h2>Escolha a Prova</h2>
+            <select id="tema-selecionado">
+                <option value="frontend">Desenvolvimento Frontend</option>
+                <option value="backend">Desenvolvimento Backend</option>
+            </select>
+            <button onclick="iniciarProva()">Começar Prova</button>
+        </section>
+
+        <section id="prova" class="section">
+            <div id="progresso" class="progresso"></div>
+            <div id="conteudo-questao"></div>
+            <div class="navegacao">
+                <button id="btn-voltar" class="btn-secundario" onclick="anteriorQuestao()">← Anterior</button>
+                <button id="btn-proximo" onclick="proximaQuestao()">Próxima →</button>
+            </div>
+        </section>
+
+        <section id="resultado" class="section">
+            <h2>Resultado da Prova</h2>
+            <div id="resumo-resultado"></div>
+            <div id="detalhes-correcao"></div>
+            <button onclick="irPara('selecao')">Refazer com novas questões</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
