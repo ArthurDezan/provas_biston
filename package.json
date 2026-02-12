@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "selenium-webdriver": "^4.40.0"
+  },
+  "scripts": {
+  "test:simulado": "node tests/simulado.test.js"
+}
+}
